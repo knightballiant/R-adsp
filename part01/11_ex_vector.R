@@ -13,35 +13,63 @@ profit <- revenue - expenses
 # 따라서 각 월별, 세금을 구하세요.
 # round 함수를 이용해서 소수점 2 자리까지 표현하세요.
 
+tax <- profit * 30 / 100
 
+tax
+
+?round
+
+round(3.128, digits = 2)
+
+tax <- round(tax, digits = 2)
+
+tax
 
 # 이제 월별 세후 수익을 구하세요.
 
+profit.after.tax <- profit - tax
 
 
 # 각 월별, 비용대비 세후수익이 얼마인지 계산하세요.
 # 퍼센트로 나오도록, 100을 곱하세요.
 
+profit.margin <- profit.after.tax / expenses * 100
 
+profit.margin <- round(profit.margin, digits = 2)
 
 # 2019년도 세후 수익은 얼마인지 평균을 구하세요.
 
-
+profit.mean <- mean(profit.after.tax)
 
 # 월별로, 평균수익 이상으로 수익을 낸 월을 찾으세요.
 
+names(profit.after.tax) <- 1:12
+
+profit.after.tax
+
+
+profit.after.tax > profit.mean
+
+profit.after.tax[ profit.after.tax > profit.mean ]
 
 
 # 반대로, 평균수익 이상 내지 못한 월들을 찾으세요.
 
+profit.after.tax[ profit.after.tax < profit.mean ]
 
 
 # 세후 수익이 가장 좋은 달은 몇월입니까?
 
+profit.after.tax
 
+max(profit.after.tax)
+
+profit.after.tax == max(profit.after.tax)
+
+profit.after.tax[  profit.after.tax == max(profit.after.tax)  ]
 
 # 세후 수익이 가장 나쁜달은 몇월입니까?
 
+profit.after.tax == min(profit.after.tax)
 
-
-
+profit.after.tax[ profit.after.tax == min(profit.after.tax) ]
